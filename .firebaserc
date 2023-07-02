@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "proyectofinal-abd5f": {
+      "hosting": {
+        "proyecto_final": [
+          "proyectofinal-abd5f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "proyectofinal-abd5f"
+  }
+}

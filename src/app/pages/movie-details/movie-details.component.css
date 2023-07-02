@@ -1,0 +1,50 @@
+img {
+    width: 100%;
+    height: auto;
+    border: none; /* Agregamos esta línea para quitar el borde */
+  }
+  
+  h1 {
+    color: #ffffff;
+    font-weight: bold;
+    border: none; /* Agregamos esta línea para quitar el borde */
+  }
+  
+  p {
+    color: #ffffff;
+    border: none; /* Agregamos esta línea para quitar el borde */
+  }
+  
+  a {
+    background-color: #e50914;
+    color: #ffffff;
+    text-decoration: none;
+    border: none; /* Agregamos esta línea para quitar el borde */
+  }
+  
+  a:hover {
+    background-color: #e50914;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+  }
+  
+.elenco-list {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 15px;
+  }
+  
+  .elenco-item {
+    margin-bottom: 5px;
+    color: #ffffff;
+    border: none; /* Agregamos esta línea para quitar el borde */
+  }
+  
+  
+.body{
+    background-color: black;
+}
+
+body{
+  background-color: black;
+}
