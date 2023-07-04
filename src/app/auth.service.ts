@@ -16,10 +16,15 @@ export class AuthService {
   getCurrentUser(): Promise<User | null> {
     return new Promise((resolve, reject) => {
       this.auth.onAuthStateChanged((user) => {
-        resolve(user);
+        if (user) {
+          resolve(user); // Si hay un usuario autenticado, resuelve la promesa con el objeto del usuario
+        } else {
+          resolve(null); // Si no hay usuario autenticado, resuelve la promesa con null
+        }
       }, (error) => {
         reject(error);
       });
     });
   }
+  
 }

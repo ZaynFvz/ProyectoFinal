@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
   // action 
   actionMovie() {
     const category = 'Accion';
-    const url = 'http://	54.226.134.15/peliculas';
+    const url = 'http://34.229.6.164/peliculas';
   
     axios.get(url)
       .then(response => {

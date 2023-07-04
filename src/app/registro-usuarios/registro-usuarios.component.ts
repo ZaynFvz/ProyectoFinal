@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
+import 'plyr';
 
 @Component({
   selector: 'app-registro-usuarios',
@@ -30,6 +31,7 @@ export class RegistroUsuariosComponent {
               email: this.email,
               nombres: this.nombres,
               apellidos: this.apellidos,
+              rol: "user",
               fecha_nacimiento: this.fecha_nacimiento
               // Agrega aquí otros datos que desees guardar
             };

@@ -7,13 +7,18 @@ import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { MovieDetailsComponent } from './pages/movie-details/movie-details.component';
 import { AuthGuard } from './auth.guard';
+import { VideoComponent } from './pages/video/video.component';
+import { PeliculasComponent } from './peliculas/peliculas.component';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   { path: 'registro', component: RegistroUsuariosComponent },
   { path: 'login', component: LoginUsuariosComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
-  { path: 'home/:id', component: MovieDetailsComponent, canActivate: [AuthGuard]}
+  { path: 'home/:id', component: MovieDetailsComponent, canActivate: [AuthGuard]},
+  { path: 'home/:id/video', component: VideoComponent, canActivate: [AuthGuard]},
+  { path: 'admin', component: PeliculasComponent, canActivate: [AdminGuard]}
 ];
 
 

@@ -11,3 +11,6 @@ body{
     background-color: #000000;
     overflow-x: hidden;
 }
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~plyr/dist/plyr.css";

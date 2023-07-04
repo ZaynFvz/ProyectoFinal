@@ -18,7 +18,13 @@ import { MovieDetailsComponent } from './pages/movie-details/movie-details.compo
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
-import { NavbarComponent } from './navbar/navbar.component'
+import { NavbarComponent } from './navbar/navbar.component';
+import { VideoComponent } from './pages/video/video.component';
+import { PeliculasComponent } from './peliculas/peliculas.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminGuard } from './admin.guard';
+import { FooterComponent } from './footer/footer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,13 +34,17 @@ import { NavbarComponent } from './navbar/navbar.component'
     HomeComponent,
     SearchComponent,
     MovieDetailsComponent,
-    NavbarComponent
+    NavbarComponent,
+    VideoComponent,
+    PeliculasComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
@@ -43,7 +53,8 @@ import { NavbarComponent } from './navbar/navbar.component'
   ],
   providers: [
     AuthGuard,
-    AuthService
+    AuthService,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })
