@@ -24,6 +24,8 @@ export class PeliculasComponent implements OnInit {
     director: '',
     elenco: [],
   };
+  peliculasFiltradas: any[] = [];
+
   anopublic: number | null = null;
 
   constructor() {
@@ -33,13 +35,26 @@ export class PeliculasComponent implements OnInit {
   ngOnInit(): void {
     this.cargarPeliculas();
     this.cargarCategorias();
+    this.peliculasFiltradas = this.peliculas; // Cargar todas las películas sin filtrar inicialmente
   }
+  
 
+  filtrarPorCategoria(categoriaId: string) {
+    if (categoriaId === '') {
+      this.peliculasFiltradas = this.peliculas;
+    } else {
+      this.peliculasFiltradas = this.peliculas.filter(pelicula => pelicula.categoria._id === categoriaId);
+    }
+  }
+  
+  
+  
   cargarPeliculas() {
     axios
-      .get('http://34.229.6.164/peliculas')
+      .get('http://52.86.133.104/peliculas')
       .then((response) => {
         this.peliculas = response.data;
+        this.peliculasFiltradas = response.data;
       })
       .catch((error) => {
         console.error('Error al cargar las películas:', error);
@@ -72,7 +87,7 @@ export class PeliculasComponent implements OnInit {
 
   cargarCategorias() {
     axios
-      .get('http://34.229.6.164/categorias')
+      .get('http://52.86.133.104/categorias')
       .then((response) => {
         this.categorias = response.data;
       })
@@ -90,7 +105,7 @@ export class PeliculasComponent implements OnInit {
       if (confirmacion) {
         axios
         .put(
-          `http://34.229.6.164/peliculas/${this.pelicula._id}`,
+          `http://52.86.133.104/peliculas/${this.pelicula._id}`,
           this.pelicula
         )
         .then((response) => {
@@ -108,7 +123,7 @@ export class PeliculasComponent implements OnInit {
       const confirmacion = window.confirm('¿Estás seguro de guardar esta película?');
       if (confirmacion) {
         axios
-        .post('http://34.229.6.164/peliculas', this.pelicula)
+        .post('http://52.86.133.104/peliculas', this.pelicula)
         .then((response) => {
           console.log('Película guardada:', response.data);
           this.cargarPeliculas();
@@ -134,7 +149,7 @@ export class PeliculasComponent implements OnInit {
     const confirmacion = window.confirm('¿Estás seguro de eliminar esta película?');
     if (confirmacion) {
       axios
-      .delete(`http://34.229.6.164/peliculas/${id}`)
+      .delete(`http://52.86.133.104/peliculas/${id}`)
       .then((response) => {
         console.log('Película eliminada:', response.data);
         this.cargarPeliculas();

@@ -24,6 +24,9 @@ import { PeliculasComponent } from './peliculas/peliculas.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminGuard } from './admin.guard';
 import { FooterComponent } from './footer/footer.component';
+import { HomenetflixComponent } from './homenetflix/homenetflix.component';
+import { NavigatorComponent } from './navigator/navigator.component';
+import { SeriePelisComponent } from './serie-pelis/serie-pelis.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { FooterComponent } from './footer/footer.component';
     VideoComponent,
     PeliculasComponent,
     FooterComponent,
+    HomenetflixComponent,
+    NavigatorComponent,
+    SeriePelisComponent,
   ],
   imports: [
     BrowserModule,

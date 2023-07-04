@@ -1,0 +1,87 @@
+.netflix-home{
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+    overflow: auto;
+  }
+  .carousel1 {
+    max-width: 95%; /* Ajusta el ancho máximo del carrusel según tu necesidad */
+    margin: 0 auto; /* Centra el carrusel horizontalmente */
+  }
+  
+  .carousel-image {
+    max-height: 600px; /* Ajusta la altura máxima de las imágenes del carrusel según tu necesidad */
+    object-fit: cover; /* Ajusta cómo se ajusta la imagen al contenedor */
+  }
+  
+  .custom-logo-container {
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+  /* Series */
+  
+  .title-list {
+    font-size: 24px;
+    margin-top: 30px;
+    color: #fff;
+  }
+  
+  .carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .carousel-control:hover {
+    background-color: #aaa;
+  }
+  
+  .image-list {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding: 5px;
+  }
+  
+  .image-list a {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .image-list img {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .carousel-control.prev {
+    left: 5px;
+    width: 60px;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  .carousel-control.next {
+    right: 5px;
+    width: 60px;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  .image-list-container {
+    padding-bottom: 15px;
+  }
+  

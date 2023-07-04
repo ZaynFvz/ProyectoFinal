@@ -1,0 +1,17 @@
+<div class="netflix-home" [style.background-image]="'url(./assets/fondonetflix.jpg)'">
+    <div class="difumi-home">
+      <div class="custom-logo-container">
+        <img src="./assets/pngwing.com (2).png" alt="Logo de Netflix" class="custom-logo">
+      </div>
+      <div class="content">
+        <div class="content-description">
+          <h2 class="title">{{pelicula.nombre}}</h2>
+          <p class="description">{{pelicula.descripcion}}</p>
+          <button class="play-button" (click)="reproducirPelicula()">
+            <i class="fas fa-play"></i>Reproducir</button> 
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  

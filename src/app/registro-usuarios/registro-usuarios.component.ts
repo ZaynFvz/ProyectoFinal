@@ -39,7 +39,7 @@ export class RegistroUsuariosComponent {
               .subscribe(
                 () => {
                   // Datos guardados exitosamente
-                  this.router.navigate(['/home']);
+                  this.router.navigate(['/navigator']);
                 },
                 (error) => {
                   // Error al guardar los datos

@@ -21,7 +21,7 @@ export class LoginUsuariosComponent {
       // El usuario ha iniciado sesión exitosamente
       console.log(userCredential.user);
       // Realiza cualquier acción adicional necesaria después del inicio de sesión exitoso
-      this.router.navigate(['/home']); // Redirecciona al componente deseado
+      this.router.navigate(['/navigator']); // Redirecciona al componente deseado
     } catch (error) {
       // Ocurrió un error durante el inicio de sesión
       console.error(error);

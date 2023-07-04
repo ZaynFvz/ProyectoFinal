@@ -1,15 +1,23 @@
-<app-navbar></app-navbar>
-
+<body>
 <h1 class="mt-5">Lista de Películas</h1>
 
 <!-- Listar Películas -->
 <ul>
-  <li *ngFor="let pelicula of peliculas">
+  <li *ngFor="let pelicula of peliculasFiltradas">
     {{ pelicula.nombre }}
     <button (click)="editarPelicula(pelicula)">Editar</button>
     <button (click)="eliminarPelicula(pelicula._id)">Eliminar</button>
   </li>
+  Filtrar por Categoría:
+  <select name="categoriaFilter" id="categoriaFilter" [(ngModel)]="categoriaSeleccionada" (change)="filtrarPorCategoria(categoriaSeleccionada)">
+    <option value="">Todos</option>
+    <option *ngFor="let categoria of categorias" [ngValue]="categoria._id">
+      {{ categoria.nombre }}
+    </option>
+  </select>
+  
 </ul>
+
 
 <h1>Crear/Editar Película</h1>
 
@@ -59,3 +67,4 @@
   <button type="submit">Guardar</button>
   <button type="button" (click)="resetFormulario()">Cancelar</button>
 </form>
+</body>

@@ -1,0 +1,72 @@
+.netflix-home {
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  }
+  
+  .difumi-home {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  
+  .custom-logo-container {
+    padding-left: 35px;
+    padding-top: 15px;
+  }
+  
+  .content-description {
+    color: white;
+    height: 600px;
+    margin: auto;
+    top: 40%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 35px; /* Ajusta el valor según tu necesidad */
+  }
+  
+  .title {
+    font-size: 115px;
+    font-weight: bold;
+    margin-bottom: 2cap;
+  }
+  
+  .description {
+    font-size: 23px;
+  }
+  
+  .play-button {
+    background-color: white;
+    color: black;
+    border: none;
+    margin-top: 10px;
+    padding: 10px 25px;
+    font-size: 17px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .play-button i {
+    margin-right: 10px;
+  }
+  
+  .video-player {
+    position: absolute;
+    top: 40%;
+    right: 40px;
+    transform: translateY(-50%);
+    width: 1000px;
+  }
+  
+  .video-player video {
+    width: 100%;
+    height: auto;
+  }

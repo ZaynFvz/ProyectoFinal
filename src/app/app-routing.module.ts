@@ -10,6 +10,9 @@ import { AuthGuard } from './auth.guard';
 import { VideoComponent } from './pages/video/video.component';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 import { AdminGuard } from './admin.guard';
+import { NavigatorComponent } from './navigator/navigator.component';
+import { HomenetflixComponent } from './homenetflix/homenetflix.component';
+import { SeriePelisComponent } from './serie-pelis/serie-pelis.component';
 
 const routes: Routes = [
   { path: 'registro', component: RegistroUsuariosComponent },
@@ -18,7 +21,15 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
   { path: 'home/:id', component: MovieDetailsComponent, canActivate: [AuthGuard]},
   { path: 'home/:id/video', component: VideoComponent, canActivate: [AuthGuard]},
-  { path: 'admin', component: PeliculasComponent, canActivate: [AdminGuard]}
+  { path: 'admin', component: PeliculasComponent, canActivate: [AdminGuard]},
+  { path: 'navigator', component: NavigatorComponent,
+    children: [
+      { path: '', component: HomenetflixComponent, canActivate: [AuthGuard] },
+      { path: 'serie-pelis/:id', component: SeriePelisComponent, canActivate: [AuthGuard] },
+      { path: 'serie-pelis/:id/video', component: VideoComponent, canActivate: [AuthGuard] },
+      { path: 'admin', component: PeliculasComponent, canActivate: [AdminGuard]},
+    ], 
+  },
 ];
 
 

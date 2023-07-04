@@ -28,7 +28,7 @@ export class AdminGuard implements CanActivate {
             if (role === 'admin') {
               resolve(true); // El usuario es admin, permite el acceso a la ruta
             } else {
-              this.router.navigate(['/home']); // No hay usuario admin, redirige a la página principal
+              this.router.navigate(['/navigator']); // No hay usuario admin, redirige a la página principal
               resolve(false);
             }
           }, (error) => {
