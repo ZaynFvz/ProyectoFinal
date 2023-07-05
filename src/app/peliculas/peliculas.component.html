@@ -1,70 +1,157 @@
 <body>
-<h1 class="mt-5">Lista de Películas</h1>
+  <h1 class="mt-5">Lista de Películas</h1>
 
-<!-- Listar Películas -->
-<ul>
-  <li *ngFor="let pelicula of peliculasFiltradas">
-    {{ pelicula.nombre }}
-    <button (click)="editarPelicula(pelicula)">Editar</button>
-    <button (click)="eliminarPelicula(pelicula._id)">Eliminar</button>
-  </li>
-  Filtrar por Categoría:
-  <select name="categoriaFilter" id="categoriaFilter" [(ngModel)]="categoriaSeleccionada" (change)="filtrarPorCategoria(categoriaSeleccionada)">
-    <option value="">Todos</option>
-    <option *ngFor="let categoria of categorias" [ngValue]="categoria._id">
-      {{ categoria.nombre }}
-    </option>
-  </select>
-  
-</ul>
+  <!-- Listar Películas -->
+  <ul>
+    <li *ngFor="let pelicula of peliculasFiltradas">
+      {{ pelicula.nombre }}
+      <button (click)="editarPelicula(pelicula)" class="editar-button">Editar</button>
+      <button (click)="eliminarPelicula(pelicula._id)">Eliminar</button>
+    </li>
+    Filtrar por Categoría:
+    <select
+      name="categoriaFilter"
+      id="categoriaFilter"
+      [(ngModel)]="categoriaSeleccionada"
+      (change)="filtrarPorCategoria(categoriaSeleccionada)"
+    >
+      <option value="">Todos</option>
+      <option *ngFor="let categoria of categorias" [ngValue]="categoria._id">
+        {{ categoria.nombre }}
+      </option>
+    </select>
+    Buscar por nombre
+    <div class="barra-busqueda">
+      <input
+        type="text"
+        placeholder="Buscar película..."
+        [(ngModel)]="busqueda"
+        (input)="filtrarPorBusqueda(busqueda)"
+      />
+      <button (click)="limpiarBusqueda()">Limpiar</button>
+    </div>
+  </ul>
 
+  <h1>Crear/Editar Película</h1>
 
-<h1>Crear/Editar Película</h1>
+  <!-- Formulario -->
+  <div class="formulario-container">
+    <form (ngSubmit)="guardarPelicula()" class="formulario-pelicula">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nombre">Nombre:</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            [(ngModel)]="pelicula.nombre"
+            required
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="descripcion">Descripción:</label>
+          <textarea
+            id="descripcion"
+            name="descripcion"
+            [(ngModel)]="pelicula.descripcion"
+            required
+          ></textarea>
+        </div>
+      </div>
 
-<!-- Formulario -->
-<form (ngSubmit)="guardarPelicula()">
-  <label for="nombre">Nombre:</label>
-  <input type="text" id="nombre" name="nombre" [(ngModel)]="pelicula.nombre" required>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="urlpelicula">URL de la Película:</label>
+          <input
+            type="text"
+            id="urlpelicula"
+            name="urlpelicula"
+            [(ngModel)]="pelicula.urlpelicula"
+            required
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="urlimagen">URL de la Imagen:</label>
+          <input
+            type="text"
+            id="urlimagen"
+            name="urlimagen"
+            [(ngModel)]="pelicula.urlimagen"
+            required
+          />
+        </div>
+      </div>
 
-  <label for="descripcion">Descripción:</label>
-  <textarea id="descripcion" name="descripcion" [(ngModel)]="pelicula.descripcion" required></textarea>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="categoria">Categoría:</label>
+          <select
+            name="categoria"
+            id="categoria"
+            [(ngModel)]="categoriaSeleccionada"
+          >
+            <option
+              *ngFor="let categoria of categorias"
+              [ngValue]="categoria._id"
+            >
+              {{ categoria.nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="duracion">Duración:</label>
+          <input
+            type="text"
+            id="duracion"
+            name="duracion"
+            [(ngModel)]="pelicula.duracion"
+            required
+          />
+        </div>
+      </div>
 
-  <label for="urlpelicula">URL de la Película:</label>
-  <input type="text" id="urlpelicula" name="urlpelicula" [(ngModel)]="pelicula.urlpelicula" required>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="director">Director:</label>
+          <input
+            type="text"
+            id="director"
+            name="director"
+            [(ngModel)]="pelicula.director"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label>Elenco:</label>
+          <div *ngFor="let nombre of elenco">
+            {{ nombre }}
+            <button (click)="eliminarActor($event, nombre)">Eliminar</button>
+          </div>
+          <input
+            type="text"
+            [(ngModel)]="nuevoElenco"
+            (input)="onNuevoElencoChange($event)"
+          />
+          <button type="button" (click)="agregarElenco()">Agregar</button>
+        </div>
+      </div>
 
-  <label for="urlimagen">URL de la Imagen:</label>
-  <input type="text" id="urlimagen" name="urlimagen" [(ngModel)]="pelicula.urlimagen" required>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="anopublic">Año de Publicación:</label>
+          <input
+            type="number"
+            id="anopublic"
+            name="anopublic"
+            [(ngModel)]="anopublic"
+            required
+          />
+        </div>
+      </div>
 
-  <label for="categoria">Categoría:</label>
-  <select name="categoria" id="categoria" [(ngModel)]="categoriaSeleccionada">
-    <option *ngFor="let categoria of categorias" [ngValue]="categoria._id">
-      {{ categoria.nombre }}
-    </option>
-  </select>
-
-  <label for="duracion">Duración:</label>
-  <input type="text" id="duracion" name="duracion" [(ngModel)]="pelicula.duracion" required>
-
-  <label for="director">Director:</label>
-  <input type="text" id="director" name="director" [(ngModel)]="pelicula.director">
-
-  <label>Elenco:</label>
-<div *ngFor="let nombre of elenco">
-  {{ nombre }}
-  <button (click)="eliminarActor($event, nombre)">Eliminar</button>
-</div>
-
-<input type="text" [(ngModel)]="nuevoElenco" (input)="onNuevoElencoChange($event)">
-
-<button type="button" (click)="agregarElenco()">Agregar</button>
-      
-  
-  <label for="anopublic">Año de Publicación:</label>
-  <input type="number" id="anopublic" name="anopublic" [(ngModel)]="anopublic" required>
-
-
-
-  <button type="submit">Guardar</button>
-  <button type="button" (click)="resetFormulario()">Cancelar</button>
-</form>
+      <div class="botones">
+        <button type="submit">Guardar</button>
+        <button type="button" class="cancel" (click)="resetFormulario()">Cancelar</button>
+      </div>
+    </form>
+  </div>
 </body>

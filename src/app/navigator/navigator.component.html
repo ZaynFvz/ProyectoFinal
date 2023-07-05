@@ -2,13 +2,13 @@
     <div class="content-center">
       <ul>
         <li class="icon">
-          <a class="fas fa-search" routerLink="/navigator/buscadornetflix" routerLinkActive="active"></a></li>
+          <a class="fas fa-search" routerLink="/navigator/search" routerLinkActive="active"></a></li>
         <li class="icon">
           <a class="fas fa-home" routerLink="/navigator/" routerLinkActive="active"></a></li>
         <li class="icon">
           <a class="fas fa-tv" routerLink="/navigator/admin" routerLinkActive="active" *ngIf="isAdmin"></a></li>
         <li class="icon">
-          <button class="fas fa-film" (click)="cerrarSesion()"></button></li>
+          <button class="fas fa-power-off" (click)="cerrarSesion()"></button></li>
       </ul>
     </div>
   </div>

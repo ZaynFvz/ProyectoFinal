@@ -8,6 +8,7 @@ import { ViewChild, ElementRef } from '@angular/core';
 })
 export class PeliculasComponent implements OnInit {
   peliculas: any[] = [];
+  busqueda: string = '';
   nuevoElenco: string = '';
   elenco: string[] = [];
   categorias: any[] = [];
@@ -173,5 +174,19 @@ export class PeliculasComponent implements OnInit {
     };
     this.anopublic = null;
     this.pelicula.elenco = [];
+  }
+  filtrarPorBusqueda(busqueda: string) {
+    // Aplica la lógica para filtrar las películas según la búsqueda
+    // Utiliza la variable `busqueda` para realizar la búsqueda en tus datos
+    
+    // Ejemplo:
+    this.peliculasFiltradas = this.peliculas.filter(pelicula =>
+      pelicula.nombre.toLowerCase().includes(busqueda.toLowerCase())
+    );
+  }
+  
+  limpiarBusqueda() {
+    this.busqueda = '';
+    this.filtrarPorBusqueda('');
   }
 }

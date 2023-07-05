@@ -16,7 +16,7 @@ body {
   ul {
     list-style-type: none;
     padding: 0;
-    border: 1px solid #e50914; /* Rojo de Netflix */
+     /* Rojo de Netflix */
     border-radius: 4px;
     padding: 1rem;
     width: 50%; /* Mitad de la página */
@@ -34,25 +34,37 @@ body {
     background-color: #e50914;
     color: #fff;
     border: none;
+    border-radius: 4px;
     padding: 0.5rem 1rem;
     font-size: 14px;
     cursor: pointer;
     margin-left: 0.5rem;
   }
-  
+  button.editar-button {
+    background-color: orange;
+  }
   button:hover {
     background-color: #b2070f;
   }
   
   /* Estilos para el formulario de crear/editar película */
-  form {
+  .formulario-pelicula {
     margin-top: 2rem;
-    border: 1px solid #e50914; /* Rojo de Netflix */
-    border-radius: 4px;
     padding: 1rem;
     width: 50%; /* Mitad de la página */
     margin: 0 auto; /* Centrar horizontalmente */
     text-align: center; /* Centrar contenido */
+  }
+  
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    flex-basis: calc(50% - 1rem);
   }
   
   label {
@@ -62,8 +74,7 @@ body {
     text-align: left; /* Alinear texto a la izquierda */
   }
   
-  input, select,
-  textarea {
+  input, select, textarea {
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
@@ -81,6 +92,12 @@ body {
     border-radius: 4px;
   }
   
+  .botones {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
   button[type="submit"],
   button[type="button"] {
     background-color: #e50914;
@@ -89,6 +106,7 @@ body {
     padding: 0.5rem 1rem;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 4px;
     margin-right: 0.5rem;
   }
   
@@ -96,10 +114,71 @@ body {
   button[type="button"]:hover {
     background-color: #b2070f;
   }
-  
-  /* Estilos para resaltar los títulos y subtítulos */
+  button[type="button"].cancel{
+    background-color: #333;
+  }
+  button[type="button"].cancel:hover{
+    background-color: #777;
+  }
+  /* Estilos adicionales para resaltar los títulos y subtítulos */
   h1,
   h2,
   h3 {
     color: #e50914; /* Rojo de Netflix */
   }
+  
+  /* Estilos para el contenedor principal */
+  /* Estilos para el contenedor principal */
+/* Estilos para el contenedor principal */
+.formulario-container {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Estilos para el borde rojo */
+.formulario-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #e50914; /* Rojo de Netflix */
+  border-radius: 4px;
+  z-index: -1;
+  box-sizing: border-box;
+}
+
+.barra-busqueda {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.barra-busqueda input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #e50914;
+  border-radius: 4px;
+}
+
+.barra-busqueda button {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  height: 90%;
+  font-size: 1rem;
+  background-color: #e50914;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: stretch; /* Agrega esta línea para ajustar la altura */
+}
+
+.barra-busqueda button:hover {
+  background-color: #b2070f;
+}

@@ -1,1 +1,19 @@
-<p>search works!</p>
+<div class="page-container">
+    <div class="search-container">
+      <input type="text" [(ngModel)]="query" (input)="buscarPeliculas()" placeholder="Buscar películas" class="search-input">
+    </div>
+    <div class="results-container">
+        <ul *ngIf="resultados.length > 0" class="results-list">
+            <li *ngFor="let pelicula of resultados" class="result-item">
+              <a (click)="verDetalleSerie(pelicula._id)"><img [src]="pelicula.urlimagen" alt="Imagen de la película" class="result-image"></a>
+              <div class="result-info">
+                <h3 class="result-title">{{ pelicula.nombre }}</h3>
+                <p class="result-description">{{ pelicula.descripcion }}</p>
+              </div>
+            </li>
+          </ul>
+      <p *ngIf="resultados.length === 0 && query.trim().length > 0" class="no-results">No se encontraron resultados</p>
+    </div>
+    <div class="empty-space"></div>
+  </div>
+  

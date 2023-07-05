@@ -28,6 +28,7 @@ const routes: Routes = [
       { path: 'serie-pelis/:id', component: SeriePelisComponent, canActivate: [AuthGuard] },
       { path: 'serie-pelis/:id/video', component: VideoComponent, canActivate: [AuthGuard] },
       { path: 'admin', component: PeliculasComponent, canActivate: [AdminGuard]},
+      { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
     ], 
   },
 ];
