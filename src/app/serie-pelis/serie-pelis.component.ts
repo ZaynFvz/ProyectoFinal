@@ -14,7 +14,7 @@ export class SeriePelisComponent implements OnInit {
     this.route.params.subscribe(params => {
       const id = String(params['id']);
       console.log(id);
-      axios.get(`http://52.86.133.104/peliculas/${id}`)
+      axios.get(`http://api_container/peliculas/${id}`)
         .then(response => {
           this.pelicula = response.data; // Asigna los datos de la película al objeto
           console.log(this.pelicula);

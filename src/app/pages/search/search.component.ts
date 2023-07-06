@@ -20,7 +20,7 @@ export class SearchComponent {
   }
 
   obtenerPeliculas(): void {
-    this.http.get<any[]>('http://52.86.133.104/peliculas').subscribe(
+    this.http.get<any[]>('http://api_container/peliculas').subscribe(
       peliculas => {
         this.peliculas = peliculas;
       },

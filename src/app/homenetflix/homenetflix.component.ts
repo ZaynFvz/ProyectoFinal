@@ -30,7 +30,7 @@ export class HomenetflixComponent {
     const category3 = 'Terror';
     const category4 = 'Comedia';
     const category5 = 'Romance';
-    const url = 'http://52.86.133.104/peliculas';
+    const url = 'http://api_container/peliculas';
   
     axios.get(url)
       .then(response => {

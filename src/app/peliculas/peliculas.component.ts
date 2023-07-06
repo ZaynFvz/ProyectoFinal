@@ -2,16 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { ViewChild, ElementRef } from '@angular/core';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-peliculas',
   templateUrl: './peliculas.component.html',
   styleUrls: ['./peliculas.component.css'],
 })
+
+
+
+
 export class PeliculasComponent implements OnInit {
   peliculas: any[] = [];
   busqueda: string = '';
   nuevoElenco: string = '';
   elenco: string[] = [];
+
+  @ViewChild('fileInput', { static: false }) fileInput!: ElementRef<HTMLInputElement>;
+
   categorias: any[] = [];
   @ViewChild('anopublicInput', { static: false })
   anopublicInput!: ElementRef<HTMLInputElement>;
@@ -39,6 +47,11 @@ export class PeliculasComponent implements OnInit {
     this.cargarCategorias();
     this.peliculasFiltradas = this.peliculas; // Cargar todas las películas sin filtrar inicialmente
   }
+  onFileSelected(event: any) {
+    // Obtén el archivo seleccionado desde el evento
+    const file = event.target.files[0];
+    // ...
+  }
   
 
   filtrarPorCategoria(categoriaId: string) {
@@ -53,7 +66,7 @@ export class PeliculasComponent implements OnInit {
   
   cargarPeliculas() {
     axios
-      .get('http://52.86.133.104/peliculas')
+      .get('http://api_container/peliculas')
       .then((response) => {
         this.peliculas = response.data;
         this.peliculasFiltradas = response.data;
@@ -89,7 +102,7 @@ export class PeliculasComponent implements OnInit {
 
   cargarCategorias() {
     axios
-      .get('http://52.86.133.104/categorias')
+      .get('http://api_container/categorias')
       .then((response) => {
         this.categorias = response.data;
       })
@@ -118,7 +131,7 @@ export class PeliculasComponent implements OnInit {
       }).then((result) => {
         axios
         .put(
-          `http://52.86.133.104/peliculas/${this.pelicula._id}`,
+          `http://api_container/peliculas/${this.pelicula._id}`,
           this.pelicula
         )
         .then((response) => {
@@ -147,7 +160,7 @@ export class PeliculasComponent implements OnInit {
         }
       }).then((result) => {
         axios
-        .post('http://52.86.133.104/peliculas', this.pelicula)
+        .post('http://api_container/peliculas', this.pelicula)
         .then((response) => {
           console.log('Película guardada:', response.data);
           this.cargarPeliculas();
@@ -187,7 +200,7 @@ export class PeliculasComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://52.86.133.104/peliculas/${id}`)
+          .delete(`http://api_container/peliculas/${id}`)
           .then((response) => {
             Swal.fire({
               title: 'Éxito',
