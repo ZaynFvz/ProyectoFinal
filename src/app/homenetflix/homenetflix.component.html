@@ -19,7 +19,7 @@
     </div>
   
     <div class="image-list-container">
-      <h1 class="title-list">Series de TV inquietantes</h1>
+      <h1 class="title-list">Acción</h1>
       <div class="carousel">
         <button class="carousel-control prev" (click)="prevImage()">&lt;</button>
         <div class="image-list" #imageList>
@@ -31,15 +31,51 @@
       </div>
     </div>
     <div class="image-list-container">
-      <h1 class="title-list">Estrenos</h1>
+      <h1 class="title-list">Drama</h1>
       <div class="carousel">
-        <button class="carousel-control prev" (click)="prevImage1()">&lt;</button>
-        <div class="image-list" #imageList2>
-          <a *ngFor="let serie of series">
-            <img [src]="serie.imagenurl" alt="Imagen">
+        <button class="carousel-control prev" (click)="prevImage()">&lt;</button>
+        <div class="image-list" #imageList>
+          <a *ngFor="let pelicula of peliculasDrama" (click)="verDetalleSerie(pelicula._id)">
+            <img [src]="pelicula.urlimagen" alt="Imagen">
           </a>
         </div>
-        <button class="carousel-control next" (click)="nextImage1()">&gt;</button>
+        <button class="carousel-control next" (click)="nextImage()">&gt;</button>
+      </div>
+    </div>
+    <div class="image-list-container">
+      <h1 class="title-list">Romance</h1>
+      <div class="carousel">
+        <button class="carousel-control prev" (click)="prevImage()">&lt;</button>
+        <div class="image-list" #imageList>
+          <a *ngFor="let pelicula of peliculasRomance" (click)="verDetalleSerie(pelicula._id)">
+            <img [src]="pelicula.urlimagen" alt="Imagen">
+          </a>
+        </div>
+        <button class="carousel-control next" (click)="nextImage()">&gt;</button>
+      </div>
+    </div>
+    <div class="image-list-container">
+      <h1 class="title-list">Comedia</h1>
+      <div class="carousel">
+        <button class="carousel-control prev" (click)="prevImage()">&lt;</button>
+        <div class="image-list" #imageList>
+          <a *ngFor="let pelicula of peliculasComedia" (click)="verDetalleSerie(pelicula._id)">
+            <img [src]="pelicula.urlimagen" alt="Imagen">
+          </a>
+        </div>
+        <button class="carousel-control next" (click)="nextImage()">&gt;</button>
+      </div>
+    </div>
+    <div class="image-list-container">
+      <h1 class="title-list">Terror</h1>
+      <div class="carousel">
+        <button class="carousel-control prev" (click)="prevImage()">&lt;</button>
+        <div class="image-list" #imageList>
+          <a *ngFor="let pelicula of peliculasTerror" (click)="verDetalleSerie(pelicula._id)">
+            <img [src]="pelicula.urlimagen" alt="Imagen">
+          </a>
+        </div>
+        <button class="carousel-control next" (click)="nextImage()">&gt;</button>
       </div>
     </div>
   </div>

@@ -43,25 +43,33 @@ export class NavigatorComponent {
 
   cerrarSesion(): void {
     // Código para cerrar sesión
-
+  
     // Ejemplo de alerta con SweetAlert
     Swal.fire({
       title: 'Cerrar sesión',
       text: '¿Estás seguro de que quieres cerrar sesión?',
-      icon: 'warning',
+      icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Sí',
-      cancelButtonText: 'No'
+      cancelButtonText: 'No',
+      customClass: {
+        popup: 'netflix-alert',
+        title: 'swal2-title',
+        actions: 'swal2-actions',
+        confirmButton: 'swal2-confirm',
+        cancelButton: 'swal2-cancel'
+      }
     }).then((result) => {
       if (result.isConfirmed) {
         this.authService.logout()
-      .then(() => {
-        this.router.navigate(['/login']); // Redirige a la página de inicio de sesión después de cerrar sesión
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+          .then(() => {
+            this.router.navigate(['/login']);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       }
     });
   }
+  
 }

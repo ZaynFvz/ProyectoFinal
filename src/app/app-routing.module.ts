@@ -17,6 +17,7 @@ import { SeriePelisComponent } from './serie-pelis/serie-pelis.component';
 const routes: Routes = [
   { path: 'registro', component: RegistroUsuariosComponent },
   { path: 'login', component: LoginUsuariosComponent },
+  { path: '', component: LoginUsuariosComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard]},
   { path: 'home/:id', component: MovieDetailsComponent, canActivate: [AuthGuard]},

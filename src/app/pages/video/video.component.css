@@ -1,11 +1,21 @@
-.my-element {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.full-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.black-space {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 18.2%; /* Ajusta el valor según el espacio deseado */
+  background-color: black;
+}
+

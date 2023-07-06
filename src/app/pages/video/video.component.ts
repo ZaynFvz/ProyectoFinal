@@ -15,13 +15,12 @@ export class VideoComponent {
   constructor(private route: ActivatedRoute) { }
 
   ngAfterViewInit(): void {
-    const player = new Plyr(this.videoPlayer.nativeElement, {
-      // Configuración adicional del reproductor de video (opcional)
-    });
+    const player = new Plyr(this.videoPlayer.nativeElement);
+    
+    player.play()
   }
 
   ngOnInit(): void {
-    const player = new Plyr('#player');
     this.route.queryParams.subscribe(params => {
       this.urlPelicula = params['urlpelicula'];
       // Aquí puedes realizar las acciones necesarias con la variable urlPelicula recibida

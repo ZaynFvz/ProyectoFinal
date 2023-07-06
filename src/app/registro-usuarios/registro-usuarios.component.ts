@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
 import 'plyr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-usuarios',
@@ -38,12 +39,41 @@ export class RegistroUsuariosComponent {
             this.http.put(`https://proyectofinal-abd5f-default-rtdb.firebaseio.com/users/${userId}.json`, userData)
               .subscribe(
                 () => {
-                  // Datos guardados exitosamente
-                  this.router.navigate(['/navigator']);
+                  Swal.fire({
+                    title: 'Éxito',
+                    text: 'Se ha iniciado sesión correctamente',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar',
+                    customClass: {
+                      popup: 'netflix-alert',
+                      title: 'swal2-title',
+                      actions: 'swal2-actions',
+                      confirmButton: 'swal2-confirm',
+                      cancelButton: 'swal2-cancel'
+                    }
+                  }).then(async (result) => {
+                    this.router.navigate(['/navigator']);
+                  });
+                  
                 },
                 (error) => {
                   // Error al guardar los datos
                   console.error(error);
+                  Swal.fire({
+                    title: 'Fallo',
+                    text: 'Ha ocurrido un error al intentar crear su usuario, compruebe su conexión a internet e inténtelo de nuevo',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar',
+                    customClass: {
+                      popup: 'netflix-alert',
+                      title: 'swal2-title',
+                      actions: 'swal2-actions',
+                      confirmButton: 'swal2-confirm',
+                      cancelButton: 'swal2-cancel'
+                    }
+                  }).then(async (result) => {
+                    
+                  });
                   this.errorMessage = 'Error durante el registro. Por favor, inténtalo de nuevo.';
                 }
               );

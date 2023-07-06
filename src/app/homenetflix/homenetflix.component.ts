@@ -12,6 +12,9 @@ export class HomenetflixComponent {
   peliculas:any = [];
   peliculasAccion:any = [];
   peliculasDrama:any = [];
+  peliculasComedia:any = [];
+  peliculasRomance:any = [];
+  peliculasTerror:any = [];
   imageUrls: string[] = [
     './assets/fondonetflix.jpg',
     'https://www.tooltyp.com/wp-content/uploads/2014/10/1900x920-8-beneficios-de-usar-imagenes-en-nuestros-sitios-web.jpg',
@@ -20,21 +23,13 @@ export class HomenetflixComponent {
   ngOnInit(): void {
     this.getPeliculas()
   }
-  series: {id:number, imagenurl: string, titulo: string, descripcion: string, urlvideo:String }[] = [
-    { id:1, imagenurl: "./assets/fondonetflix.jpg", titulo: "Serie 1", descripcion: "Descripción de la Serie 1", urlvideo:"./assets/serie1/mp4"},
-    { id:2,imagenurl: "./assets/fondonetflix.jpg", titulo: "Serie 2", descripcion: "Descripción de la Serie 2", urlvideo:"./assets/serie1/mp4"},
-    { id:3,imagenurl: "./assets/fondonetflix.jpg", titulo: "Serie 3", descripcion: "Descripción de la Serie 3", urlvideo:"./assets/serie1/mp4" },
-    { id:4,imagenurl: "./assets/fondonetflix.jpg", titulo: "Serie 4", descripcion: "Descripción de la Serie 4", urlvideo:"./assets/serie1/mp4" },
-    { id:5,imagenurl: "./assets/fondonetflix.jpg", titulo: "Serie 5", descripcion: "Descripción de la Serie 5", urlvideo:"./assets/serie1/mp4" },
-    { id:6,imagenurl: "https://www.tooltyp.com/wp-content/uploads/2014/10/1900x920-8-beneficios-de-usar-imagenes-en-nuestros-sitios-web.jpg", titulo: "Serie 6", descripcion: "Descripción de la Serie 6", urlvideo:"./assets/serie1/mp4" },
-    { id:7,imagenurl: "./assets/fondonetflix.jpg", titulo: "Serie 7", descripcion: "Descripción de la Serie 7", urlvideo:"./assets/serie1/mp4" },
-    { id:8,imagenurl: "./assets/fondonetflix.jpg", titulo: "Serie 8", descripcion: "Descripción de la Serie 8", urlvideo:"./assets/serie1/mp4" },
-    { id:9,imagenurl: "./assets/fondonetflix.jpg", titulo: "Serie 9", descripcion: "Descripción de la Serie 9", urlvideo:"./assets/serie1/mp4" },
-    { id:10,imagenurl: "./assets/fondonetflix.jpg", titulo: "Serie 10", descripcion: "Descripción de la Serie 10", urlvideo:"./assets/serie1/mp4" },
-    // Agrega más elementos según tus necesidades
-  ];
+  
   getPeliculas() {
     const category = 'Accion';
+    const category2 = 'Drama';
+    const category3 = 'Terror';
+    const category4 = 'Comedia';
+    const category5 = 'Romance';
     const url = 'http://52.86.133.104/peliculas';
   
     axios.get(url)
@@ -48,8 +43,24 @@ export class HomenetflixComponent {
         const filteredMovies = data.filter(movie => {
           return movie && movie.categoria && movie.categoria.nombre === category;
         });
+        const filteredMovies2 = data.filter(movie => {
+          return movie && movie.categoria && movie.categoria.nombre === category2;
+        });
+        const filteredMovies3 = data.filter(movie => {
+          return movie && movie.categoria && movie.categoria.nombre === category3;
+        });
+        const filteredMovies4 = data.filter(movie => {
+          return movie && movie.categoria && movie.categoria.nombre === category4;
+        });
+        const filteredMovies5 = data.filter(movie => {
+          return movie && movie.categoria && movie.categoria.nombre === category5;
+        });
   
         this.peliculasAccion = filteredMovies;
+        this.peliculasDrama = filteredMovies2;
+        this.peliculasTerror = filteredMovies3;
+        this.peliculasComedia = filteredMovies4;
+        this.peliculasRomance = filteredMovies5;
       })
       .catch(error => {
         console.error('Error al obtener las películas:', error);

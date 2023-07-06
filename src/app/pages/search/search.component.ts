@@ -33,12 +33,14 @@ export class SearchComponent {
   buscarPeliculas(): void {
     if (this.query.trim().length > 0) {
       this.resultados = this.peliculas.filter(pelicula =>
-        pelicula.nombre.toLowerCase().includes(this.query.toLowerCase())
+        pelicula.nombre.toLowerCase().includes(this.query.toLowerCase()) ||
+        pelicula.categoria.nombre.toLowerCase().includes(this.query.toLowerCase())
       );
     } else {
       this.resultados = [];
     }
   }
+  
 
   verDetalleSerie(id: string) {
     this.router.navigate(['navigator/serie-pelis', id]);

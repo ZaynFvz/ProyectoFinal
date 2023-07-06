@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { ViewChild, ElementRef } from '@angular/core';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-peliculas',
   templateUrl: './peliculas.component.html',
@@ -102,8 +103,19 @@ export class PeliculasComponent implements OnInit {
     this.pelicula.categoria = this.categoriaSeleccionada;
     this.pelicula.elenco = [...this.elenco];
     if (this.pelicula._id) {
-      const confirmacion = window.confirm('¿Estás seguro de editar esta película?');
-      if (confirmacion) {
+      Swal.fire({
+        title: 'Éxito',
+        text: 'Registro editado satisfactoriamente',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+        customClass: {
+          popup: 'netflix-alert',
+          title: 'swal2-title',
+          actions: 'swal2-actions',
+          confirmButton: 'swal2-confirm',
+          cancelButton: 'swal2-cancel'
+        }
+      }).then((result) => {
         axios
         .put(
           `http://52.86.133.104/peliculas/${this.pelicula._id}`,
@@ -117,12 +129,23 @@ export class PeliculasComponent implements OnInit {
         .catch((error) => {
           console.error('Error al editar la película:', error);
         });
-      }
+      });
       
     } else {
       // Creación de una nueva película
-      const confirmacion = window.confirm('¿Estás seguro de guardar esta película?');
-      if (confirmacion) {
+      Swal.fire({
+        title: 'Éxito',
+        text: 'Registro guardado satisfactoriamente',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+        customClass: {
+          popup: 'netflix-alert',
+          title: 'swal2-title',
+          actions: 'swal2-actions',
+          confirmButton: 'swal2-confirm',
+          cancelButton: 'swal2-cancel'
+        }
+      }).then((result) => {
         axios
         .post('http://52.86.133.104/peliculas', this.pelicula)
         .then((response) => {
@@ -133,7 +156,7 @@ export class PeliculasComponent implements OnInit {
         .catch((error) => {
           console.error('Error al guardar la película:', error);
         });
-      }
+      });
     
       
     }
@@ -147,19 +170,47 @@ export class PeliculasComponent implements OnInit {
       this.elenco = [...this.pelicula.elenco];
   }
   eliminarPelicula(id: string) {
-    const confirmacion = window.confirm('¿Estás seguro de eliminar esta película?');
-    if (confirmacion) {
-      axios
-      .delete(`http://52.86.133.104/peliculas/${id}`)
-      .then((response) => {
-        console.log('Película eliminada:', response.data);
-        this.cargarPeliculas();
-      })
-      .catch((error) => {
-        console.error('Error al eliminar la película:', error);
-      });
-    }
-    
+    Swal.fire({
+      title: 'Eliminar Película',
+      text: '¿Estás seguro de que quieres eliminar esta película?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'No',
+      customClass: {
+        popup: 'netflix-alert',
+        title: 'swal2-title',
+        actions: 'swal2-actions',
+        confirmButton: 'swal2-confirm',
+        cancelButton: 'swal2-cancel'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://52.86.133.104/peliculas/${id}`)
+          .then((response) => {
+            Swal.fire({
+              title: 'Éxito',
+              text: 'Registro eliminado satisfactoriamente',
+              icon: 'success',
+              confirmButtonText: 'Aceptar',
+              customClass: {
+                popup: 'netflix-alert',
+                title: 'swal2-title',
+                actions: 'swal2-actions',
+                confirmButton: 'swal2-confirm',
+                cancelButton: 'swal2-cancel'
+              }
+            }).then((result) => {
+              console.log('Película eliminada:', response.data);
+              this.cargarPeliculas();
+            });
+          })
+          .catch((error) => {
+            console.error('Error al eliminar la película:', error);
+          });
+      }
+    });
   }
   resetFormulario() {
     this.pelicula = {
